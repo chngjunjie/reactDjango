@@ -10,7 +10,6 @@ services:
     command: yarn start
     volumes:
       - '.:/frontend'
-      - '/frontend/node_modules'
     ports:
       - 3001:3000
     environment:
