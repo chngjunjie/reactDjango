@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+    db:
+        image: mysql:5.7
+        environment:
+            MYSQL_HOST: '127.0.0.1'
+            MYSQL_PORT: '3306'
+            MYSQL_DATABASE: 'todomvc'
+            MYSQL_USER: 'allen'
+            MYSQL_PASSWORD: 'allen'
+            MYSQL_ROOT_PASSWORD: 'allen'
+        ports:
+            - '3306:3306'
+
+    web:
+        build: .
+        command: python manage.py runserver 0.0.0.0:8000
+        volumes:
+            - .:/backend
+        ports:
+            - "8000:8000"
+        depends_on:
+            - db
